@@ -4,8 +4,9 @@ import { Avatar } from "../Avatar";
 import { format, formatDistanceToNow } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
 import { useState } from "react";
+import { PostProps } from "./post.interface";
 
-export function Post({ author, publishedAt, content }) {
+export function Post({ author, publishedAt, content }: PostProps) {
   const [newCommentText, setnewCommentText] = useState("");
   const [comments, setComments] = useState(["post muito bacana, heim?!"]);
 

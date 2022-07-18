@@ -1,8 +1,8 @@
-import { Header } from "./components/Header";
 import "../styles/global.scss";
 import styles from "./app.module.scss";
-import { Sidebar } from "./components/Sidebar";
+import { Header } from "./components/Header";
 import { Post } from "./components/Post";
+import { Sidebar } from "./components/Sidebar";
 
 const posts = [
   {
