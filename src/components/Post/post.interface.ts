@@ -3,10 +3,12 @@ export type Author = {
   name: string;
   role: string;
 };
-
+export type Content = {
+  type: "paragraph" | "link";
+  content: string;
+};
 export interface PostProps {
-  id: number;
   author: Author;
   publishedAt: Date;
-  content: string;
+  content: Content[];
 }

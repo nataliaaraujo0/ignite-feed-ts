@@ -3,18 +3,18 @@ import { Comment } from "../Comment";
 import { Avatar } from "../Avatar";
 import { format, formatDistanceToNow } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
-import { useState } from "react";
+import { FormEvent, ChangeEvent, useState, InvalidEvent } from "react";
 import { PostProps } from "./post.interface";
 
 export function Post({ author, publishedAt, content }: PostProps) {
   const [newCommentText, setnewCommentText] = useState("");
   const [comments, setComments] = useState(["post muito bacana, heim?!"]);
 
-  function handleNewCommentInvalid() {
+  function handleNewCommentInvalid(event: FormEvent) {
     event.target.setCustomValidity("Esse campo é obrigatório!");
   }
 
-  function deleteComment(commentToDelete) {
+  function deleteComment(commentToDelete: string) {
     alert(`Deletar comentário' ${commentToDelete}`);
 
     const commentsWithoutDeleteOne = comments.filter((comment) => {
@@ -23,12 +23,12 @@ export function Post({ author, publishedAt, content }: PostProps) {
     setComments(commentsWithoutDeleteOne);
   }
 
-  function handleNewCommentChange() {
+  function handleNewCommentChange(event: ChangeEvent<HTMLTextAreaElement>) {
     event.target.setCustomValidity("");
     setnewCommentText(event.target.value);
   }
 
-  function handleCreateNewComment() {
+  function handleCreateNewComment(event: InvalidEvent<HTMLTextAreaElement>) {
     event.preventDefault();
 
     setComments([...comments, newCommentText]);
