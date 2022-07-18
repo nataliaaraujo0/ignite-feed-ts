@@ -1,13 +1,12 @@
 import { AvatarProps } from "./avatar.interface";
 import styles from "./avatar.module.scss";
 
-export function Avatar({ hasBorder = true, src, alt }: AvatarProps) {
+export function Avatar({ hasBorder = true, ...rest }: AvatarProps) {
   return (
     <div className={styles.Avatar}>
       <img
         className={hasBorder ? styles.avatarWithBorder : styles.avatar}
-        src={src}
-        alt={alt}
+        {...rest}
       />
     </div>
   );
